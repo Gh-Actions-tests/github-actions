@@ -10,7 +10,9 @@ jobs:
     steps:
       - name: Checkout code
         uses: actions/checkout@v3
-
+      - name: Get current commit SHA
+        run: |
+          echo "Current commit SHA: $GITHUB_SHA"
       - name: Count commits and get SHAs
         id: get_shas
         run: |
