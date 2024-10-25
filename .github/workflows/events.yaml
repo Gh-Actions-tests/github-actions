@@ -12,8 +12,8 @@ on:
     #  - develop
     tags: 
     #  - v1.* # matches v1.1, v1.1.2
-      - '!v1.1.1' # excluse v1.1.1
-    # Only trigger when specific files are pushed (no the same regex patterns !!)
+      - '!v1.1.1' # excludes v1.1.1
+    # Only trigger when specific files are pushed (not the same regex patterns !!)
     paths:
     #  - "**.js"
       - "!app.js"
@@ -22,8 +22,8 @@ on:
     types: [opened, assigned, reopened, synchronize]
     branches:
       - main
-    paths:
-      - "**.js"
+    #paths:
+    #  - "**.js"
   issues:
     types: [opened]
 
