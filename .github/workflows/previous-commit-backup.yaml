@@ -1,0 +1,33 @@
+name: Backup Previous Commit
+on:
+  workflow_run: 
+    workflows: [Get Previous Commits SHAs]
+    types: [completed]
+    
+
+jobs:
+  backup-previous-commit:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Get previous commit SHA
+        id: get_shas
+        run: |
+          PREVIOUS_SHA=$(git rev-parse HEAD~1)
+          echo "Previous commit SHA: $PREVIOUS_SHA"
+          echo "PREVIOUS_SHA=$PREVIOUS_SHA" >> $GITHUB_ENV
+
+      - name: Create backup directory
+        run: mkdir -p /backup
+
+      - name: Backup previous commit
+        run: |
+          # Cloner le dépôt à l'état du commit précédent dans le répertoire de sauvegarde
+          git clone --branch ${{ env.PREVIOUS_SHA }} --single-branch ${{ github.repository }} /backup
+
+#      - name: Archive backup (optional)
+#        run: |
+#          cd /path/to/backup/directory
+#          tar -czf backup-$(date +'%Y%m%d%H%M%S').tar.gz .
