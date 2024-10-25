@@ -17,7 +17,7 @@ on:
     #  - "**.js"
       - "**"
       - "!app.js"
-      - "!**/previous-commit.yaml"
+      - "!**/previous-commit*.yaml"
   # tags not applicable for pull_request
   pull_request:
     types: [opened, assigned, reopened, synchronize]
