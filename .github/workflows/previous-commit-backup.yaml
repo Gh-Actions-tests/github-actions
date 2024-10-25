@@ -15,7 +15,7 @@ jobs:
       - name: Get previous commit SHA
         id: get_shas
         run: |
-          PREVIOUS_SHA=$(git rev-parse HEAD~1)
+          PREVIOUS_SHA=$(git rev-parse HEAD^)
           echo "Previous commit SHA: $PREVIOUS_SHA"
           echo "PREVIOUS_SHA=$PREVIOUS_SHA" >> $GITHUB_ENV
 
