@@ -3,24 +3,24 @@ on:
   push:
   # All of the filters must be matched for the workflow to run
     branches:
-      - main
+    #  - main
       - WIP*
     #  - "feature/**"  # matches feature/featA, feature/featB, feature/featA/featB...
     # Having branches and branches-ignore in the same workflow is going to make it invalid
     #branches-ignore:
     #  - develop
-    tags: 
+    #tags: 
     #  - v1.* # matches v1.1, v1.1.2
-      - '!v1.1.1' # excludes v1.1.1
+    #  - '!v1.1.1' # excludes v1.1.1
     # Only trigger when specific files are pushed (not the same regex patterns !!)
-    paths:
+    #paths:
     #  - "**.js"
-      - "!app.js"
+    #  - "!app.js"
   # tags not applicable for pull_request
   pull_request:
     types: [opened, assigned, reopened, synchronize]
-    branches:
-      - main
+    #branches:
+    #  - main
     #paths:
     #  - "**.js"
   issues:
