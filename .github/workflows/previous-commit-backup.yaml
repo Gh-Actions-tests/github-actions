@@ -29,8 +29,9 @@ jobs:
           path: $BACKUP_DIR
 
       - name: Check backup
-        run:
+        run: |
           ls -a $BACKUP_DIR
+          ls -a $BACKUP_DIR/.github/workflows
 #      - name: Archive backup (optional)
 #        run: |
 #          cd /path/to/backup/directory
