@@ -17,13 +17,16 @@ jobs:
           echo "The SHA of the previous commit is: ${{ env.PREVIOUS_SHA }}"
       
       - name: Create backup directory
-        run: mkdir -p /tmp/backup
+        run: |
+          BACKUP_DIR = /tmp/backup
+          mkdir -p $BACKUP_DIR
 
       - name: Backup previous commit
-        run: |
-          # Cloner le dépôt à l'état du commit précédent dans le répertoire de sauvegarde
-          git clone --branch ${{ env.PREVIOUS_SHA }} --single-branch https://$GITHUB_ACTOR:${{ secrets.GITHUB_TOKEN }}@github.com/$GITHUB_REPOSITORY.git /tmp/backup
-
+        uses: actions/checkout@v3
+        with:
+          repository: ${{ github.repository }}
+          ref: ${{ env.PREVIOUS_SHA }}
+          path: $BACKUP_DIR
 #      - name: Archive backup (optional)
 #        run: |
 #          cd /path/to/backup/directory
