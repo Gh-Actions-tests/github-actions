@@ -4,7 +4,8 @@ on:
   # All of the filters must be matched for the workflow to run
     branches:
       - main
-      - "feature/**"  # matches feature/featA, feature/featB, feature/featA/featB...
+      - WIP*
+    #  - "feature/**"  # matches feature/featA, feature/featB, feature/featA/featB...
     # Having branches and branches-ignore in the same workflow is going to make it invalid
     #branches-ignore:
     #  - develop
