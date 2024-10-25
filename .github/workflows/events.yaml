@@ -15,7 +15,7 @@ on:
       - '!v1.1.1' # excluse v1.1.1
     # Only trigger when specific files are pushed (no the same regex patterns !!)
     paths:
-      - "**.js"
+    #  - "**.js"
       - "!app.js"
   # tags not applicable for pull_request
   pull_request:
