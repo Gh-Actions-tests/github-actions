@@ -1,8 +1,29 @@
 name: Repository events
 on: 
   push:
+  # All of the filters must be matched for the workflow to run
+    branches:
+      - main
+      - "feature/*" # matches feature/featA, feature/featB... does not match feature/featA/featB
+      - "feature/**"  # matches feature/featA, feature/featB, feature/featA/featB...
+      - "!feature/featA" # excludes feature/featA
+    # Having branches and branches-ignore in the same workflow is going to make it invalid
+    #branches-ignore:
+    #  - develop
+    tags: 
+      - v1.* # matches v1.1, v1.1.2
+      - '!v1.1.1' # excluse v1.1.1
+    # Only trigger when specific files are pushed (no the same regex patterns !!)
+    paths:
+      - "**.js"
+      - "!app.js"
+  # tags not applicable for pull_request
   pull_request:
     types: [opened, assigned, reopened, synchronize]
+    branches:
+      - main
+    paths:
+      - "**.js"
   issues:
     types: [opened]
 
