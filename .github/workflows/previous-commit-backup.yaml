@@ -22,7 +22,7 @@ jobs:
       - name: Backup previous commit
         run: |
           # Cloner le dépôt à l'état du commit précédent dans le répertoire de sauvegarde
-          git clone --branch ${{ env.PREVIOUS_SHA }} --single-branch https://github.com/${{ github.repository }} /tmp/backup
+          git clone --branch ${{ env.PREVIOUS_SHA }} --single-branch https://$GITHUB_ACTOR:${{ secrets.GITHUB_TOKEN }}@github.com/$GITHUB_REPOSITORY.git /tmp/backup
 
 #      - name: Archive backup (optional)
 #        run: |
