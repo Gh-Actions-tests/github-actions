@@ -27,6 +27,10 @@ jobs:
           repository: ${{ github.repository }}
           ref: ${{ env.PREVIOUS_SHA }}
           path: $BACKUP_DIR
+
+      - name: Check backup
+        run:
+          ls -a $BACKUP_DIR
 #      - name: Archive backup (optional)
 #        run: |
 #          cd /path/to/backup/directory
