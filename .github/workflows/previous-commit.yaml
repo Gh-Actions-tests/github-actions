@@ -3,6 +3,8 @@ on:
   push:
     branches:
       - main
+    paths:
+      - "**/previous-commit*.yaml"
 
 jobs:
   get-previous-shas:
