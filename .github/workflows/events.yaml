@@ -15,6 +15,7 @@ on:
     # Only trigger when specific files are pushed (not the same regex patterns !!)
     paths:
     #  - "**.js"
+      - "**"
       - "!app.js"
   # tags not applicable for pull_request
   pull_request:
