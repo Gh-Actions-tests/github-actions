@@ -20,7 +20,7 @@ jobs:
         run: |
           BACKUP_DIR=${{ github.workspace }}/tmp/backup
           echo "BACKUP_DIR=$BACKUP_DIR" >> $GITHUB_ENV
-          mkdir $BACKUP_DIR
+          mkdir -p $BACKUP_DIR
 
       - name: Backup previous commit
         uses: actions/checkout@v3
