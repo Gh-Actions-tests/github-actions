@@ -18,9 +18,9 @@ jobs:
       
       - name: Create backup directory
         run: |
-          BACKUP_DIR=${{ github.workspace }}/backup
+          BACKUP_DIR=${{ github.workspace }}/tmp/backup
           echo "BACKUP_DIR=$BACKUP_DIR" >> $GITHUB_ENV
-          mkdir -p /tmp/backup
+          mkdir $BACKUP_DIR
 
       - name: Backup previous commit
         uses: actions/checkout@v3
@@ -31,9 +31,10 @@ jobs:
 
       - name: Check backup
         run: |
+          echo "Contents of workspace:"
+          ls -la ${{ github.workspace }}
           echo "Contents of $BACKUP_DIR:"
           ls -la ${{ env.BACKUP_DIR }}  # Affiche le contenu du répertoire de sauvegarde pour vérifier le clonage
-          
           # Si le dépôt est cloné directement dans $BACKUP_DIR, accède-y pour vérifier le commit
           cd ${{ env.BACKUP_DIR }}
           echo "Current pwd:"
