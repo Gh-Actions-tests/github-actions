@@ -30,8 +30,9 @@ jobs:
         run: |
           pwd
           ls
-          cd ${{ env.PROJECT_DIR }}
+          cd ./project
           pwd
+          ls
           echo "Current commit SHA: $GITHUB_SHA"
 
       # - name: Count previous commits and get their SHAs
