@@ -9,8 +9,26 @@ jobs:
   backup-previous-commit:
     runs-on: ubuntu-latest
     steps:
+      - name: First check
+        run: |
+          echo "Contents of workspace before first checkout:"
+          ls -la ${{ github.workspace }}
+          echo "one dir up:"
+          cd ..
+          ls -la
+          pwd
+
       - name: Checkout code
         uses: actions/checkout@v3
+
+      - name: Second check
+        run: |
+          echo "Contents of workspace after first checkout:"
+          ls -la ${{ github.workspace }}
+          echo "one dir up:"
+          cd ..
+          ls -la
+          pwd
 
       - name: Use previous commit SHA
         run: |
@@ -20,6 +38,8 @@ jobs:
         run: |
           BACKUP_DIR=${{ github.workspace }}/tmp/backup
           echo "BACKUP_DIR=$BACKUP_DIR" >> $GITHUB_ENV
+          echo "Backup dir:"
+          echo $BACKUP_DIR
           mkdir -p $BACKUP_DIR
 
       - name: Backup previous commit
