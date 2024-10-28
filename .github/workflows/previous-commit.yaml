@@ -29,6 +29,7 @@ jobs:
       - name: Display current commit SHA
         run: |
           pwd
+          cd /project
           echo "Current commit SHA: $GITHUB_SHA"
 
       - name: Count previous commits and get their SHAs
