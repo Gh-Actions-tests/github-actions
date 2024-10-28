@@ -31,8 +31,6 @@ jobs:
       - name: Check backup
         run: |
           pwd $BACKUP_DIR
-          ls -a $BACKUP_DIR
-          ls -a $BACKUP_DIR/.github
 #      - name: Archive backup (optional)
 #        run: |
 #          cd /path/to/backup/directory
