@@ -30,13 +30,13 @@ jobs:
 
       - name: Check backup
         run: |
-          cd $BACKUP_DIR/github-actions  # Accède au dossier cloné dans /tmp/backup
-          echo "Backup directory path:"
-          pwd
-          echo "Backup directory contents:"
-          ls -la                        # Liste les fichiers pour vérifier le clonage
+          echo "Contents of $BACKUP_DIR:"
+          ls -la $BACKUP_DIR  # Affiche le contenu du répertoire de sauvegarde pour vérifier le clonage
+          
+          # Si le dépôt est cloné directement dans $BACKUP_DIR, accède-y pour vérifier le commit
+          cd $BACKUP_DIR
           echo "Backup commit SHA:"
-          git rev-parse HEAD            # Affiche le SHA du commit pour confirmation
+          git rev-parse HEAD  # Affiche le SHA du commit pour confirmation
 #      - name: Archive backup (optional)
 #        run: |
 #          cd /path/to/backup/directory
