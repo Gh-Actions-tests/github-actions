@@ -37,6 +37,7 @@ jobs:
 
       - name: Count previous commits and get their SHAs
         run: |
+          cd ./project
           # Counts the number of commits in the git history
           COMMIT_COUNT=$(git rev-list --count HEAD)
           echo "Total number of commits: $COMMIT_COUNT"
