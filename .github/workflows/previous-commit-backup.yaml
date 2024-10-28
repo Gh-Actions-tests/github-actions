@@ -18,7 +18,8 @@ jobs:
       
       - name: Create backup directory
         run: |
-          echo "BACKUP_DIR=/tmp/backup" >> $GITHUB_ENV
+          BACKUP_DIR=${{ github.workspace }}/backup
+          echo "BACKUP_DIR=$BACKUP_DIR" >> $GITHUB_ENV
           mkdir -p /tmp/backup
 
       - name: Backup previous commit
