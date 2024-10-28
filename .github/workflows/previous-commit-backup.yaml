@@ -36,8 +36,10 @@ jobs:
           
           # Si le dépôt est cloné directement dans $BACKUP_DIR, accède-y pour vérifier le commit
           cd ${{ env.BACKUP_DIR }}
+          echo "Current pwd:"
+          pwd
           echo "Backup commit SHA:"
-          git log  # Affiche le SHA du commit pour confirmation
+          git rev-parse HEAD  # Affiche le SHA du commit pour confirmation
 #      - name: Archive backup (optional)
 #        run: |
 #          cd /path/to/backup/directory
