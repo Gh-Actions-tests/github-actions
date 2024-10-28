@@ -18,23 +18,23 @@ jobs:
       
       - name: Create backup directory
         run: |
-          BACKUP_DIR=/tmp/backup
-          mkdir -p $BACKUP_DIR
+          echo "BACKUP_DIR=/tmp/backup" >> $GITHUB_ENV
+          mkdir -p /tmp/backup
 
       - name: Backup previous commit
         uses: actions/checkout@v3
         with:
           repository: ${{ github.repository }}
           ref: ${{ env.PREVIOUS_SHA }}
-          path: $BACKUP_DIR
+          path: ${{ env.BACKUP_DIR }}
 
       - name: Check backup
         run: |
           echo "Contents of $BACKUP_DIR:"
-          ls -la $BACKUP_DIR  # Affiche le contenu du répertoire de sauvegarde pour vérifier le clonage
+          ls -la ${{ env.BACKUP_DIR }}  # Affiche le contenu du répertoire de sauvegarde pour vérifier le clonage
           
           # Si le dépôt est cloné directement dans $BACKUP_DIR, accède-y pour vérifier le commit
-          cd $BACKUP_DIR
+          cd ${{ env.BACKUP_DIR }}
           echo "Backup commit SHA:"
           git rev-parse HEAD  # Affiche le SHA du commit pour confirmation
 #      - name: Archive backup (optional)
