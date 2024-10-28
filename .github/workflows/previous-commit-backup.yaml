@@ -13,23 +13,25 @@ jobs:
         run: |
           echo "Contents of workspace before first checkout:"
           ls -la ${{ github.workspace }}
-          echo "one dir up:"
-          cd ..
-          ls -la
-          pwd
+          PROJECT_DIR=${{ github.workspace }}/project
+          echo "PROJECT_DIR=$PROJECT_DIR" >> $GITHUB_ENV
+          echo "Backup dir:"
+          echo $PROJECT_DIR
+          mkdir -p $PROJECT_DIR
 
       - name: Checkout code
         uses: actions/checkout@v3
+        with:
+          repository: ${{ github.repository }}
+          path: ${{ env.PROJECT_DIR }}
 
       - name: Second check
         run: |
           echo "Contents of workspace after first checkout:"
           ls -la ${{ github.workspace }}
-          echo "one dir up:"
-          cd ..
-          ls -la
-          pwd
-
+          echo "Contents of project dir:"
+          ls -la ${{ env.PROJECT_DIR }}
+          
       - name: Use previous commit SHA
         run: |
           echo "The SHA of the previous commit is:"
@@ -37,7 +39,7 @@ jobs:
       
       - name: Create backup directory
         run: |
-          BACKUP_DIR=${{ github.workspace }}/../tmp/backup
+          BACKUP_DIR=${{ github.workspace }}/backup
           echo "BACKUP_DIR=$BACKUP_DIR" >> $GITHUB_ENV
           echo "Backup dir:"
           echo $BACKUP_DIR
