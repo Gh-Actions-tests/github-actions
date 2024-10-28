@@ -1,9 +1,11 @@
 name: Backup Previous Commit
 on:
-  workflow_run: 
-    workflows: [Get Previous Commits SHAs]
-    types: [completed]
-    
+  # workflow_run: 
+  #   workflows: [Get Previous Commits SHAs]
+  #   types: [completed]
+  push:
+    paths:
+      - "!app.js"
 
 jobs:
   backup-previous-commit:
