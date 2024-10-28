@@ -32,11 +32,12 @@ jobs:
 
       - name: Use previous commit SHA
         run: |
-          echo "The SHA of the previous commit is: ${{ env.PREVIOUS_SHA }}"
+          echo "The SHA of the previous commit is:"
+          echo ${{ env.PREVIOUS_SHA }}
       
       - name: Create backup directory
         run: |
-          BACKUP_DIR=${{ github.workspace }}/tmp/backup
+          BACKUP_DIR=${{ github.workspace }}/../tmp/backup
           echo "BACKUP_DIR=$BACKUP_DIR" >> $GITHUB_ENV
           echo "Backup dir:"
           echo $BACKUP_DIR
