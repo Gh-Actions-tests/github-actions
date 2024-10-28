@@ -25,7 +25,7 @@ jobs:
           echo "Total number of commits: $COMMIT_COUNT"
 
           # Vérifie si il y a assez de commits
-          if [ "$COMMIT_COUNT" >= 4 ]; then
+          if [ "$COMMIT_COUNT" -ge 4 ]; then
               PREVIOUS_SHA=$(git rev-parse HEAD~1)  # 1 commit précédent
               TWO_COMMITS_BEFORE_SHA=$(git rev-parse HEAD~2)  # 2 commits précédents
               THREE_COMMITS_BEFORE_SHA=$(git rev-parse HEAD~3)  # 3 commits précédents
@@ -43,7 +43,7 @@ jobs:
               echo "Not enough commits available."
               exit 1  # Échoue le job si pas assez de commits
           fi
-          
+
       - name: First check
         run: |
           echo "Contents of workspace before first checkout:"
