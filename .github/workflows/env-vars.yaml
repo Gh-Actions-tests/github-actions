@@ -8,4 +8,4 @@ jobs:
       - name: Log ENV VAR
         run: echo $GITHUB_REF #lives inside the runner machine
       - name: Log Context
-        run: exho '${{ github.ref }}' #evaluated by github before being sent to the runner machine
+        run: echo '${{ github.ref }}' #evaluated by github before being sent to the runner machine
