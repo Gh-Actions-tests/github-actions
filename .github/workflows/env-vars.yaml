@@ -1,0 +1,11 @@
+name: Environment Variables
+on: [push]
+
+jobs:
+  env-vars-and-context:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Log ENV VAR
+        run: echo $GITHUB_REF #lives inside the runner machine
+      - name: Log Context
+        run: exho '${{ github.ref }}' #evaluated by github before being sent to the runner machine
