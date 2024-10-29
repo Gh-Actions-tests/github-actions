@@ -11,6 +11,6 @@ jobs:
     steps:
       - uses: actions/stale@v8
         with:
-          stale-issue-manager: "This is some message."
+          stale-issue-message: "This is some message."
           days-before-stale: 1
           days-before-close: 5
