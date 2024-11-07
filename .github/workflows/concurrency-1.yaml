@@ -9,7 +9,7 @@ on:
         required: true
 
 concurrency:
-  group: ${{ github.event.inputs.environment }} # string called concurrency group (only one with that name at a time)
+  group: ${{ github.workflow }}-${{ github.event.inputs.environment }} # string called concurrency group (only one with that name at a time)
   cancel-in-progress: true # by default cancels only the ones not in progress and pending for the latest one
 jobs:
   sleep:
