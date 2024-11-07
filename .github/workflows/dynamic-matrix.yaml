@@ -11,6 +11,8 @@ on:
         default: "14,15,16"
         type: string
 
+# example for repository_dispatch (http request trigger) : https://docs.github.com/en/actions/writing-workflows/choosing-what-your-workflow-does/running-variations-of-jobs-in-a-workflow#example-using-contexts-to-create-matrices
+
 jobs:
   prepare-matrix:
     runs-on: ubuntu-latest
