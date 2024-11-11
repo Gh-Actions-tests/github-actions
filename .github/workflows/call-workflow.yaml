@@ -19,6 +19,5 @@ jobs:
           repository: Gh-Actions-tests/workflows  # Nom du repository contenant le workflow
           workflow: simple-workflow.yml         # Fichier du workflow dans workflows
           ref: main                             # La branche où le workflow doit s'exécuter
-          inputs:                               # Paramètres à passer au workflow appelé
-            message: "Hello from github-actions!"  # Entrée message
+          message: "Hello from github-actions!"  # Entrée message
           token: ${{ secrets.GITHUB_TOKEN }}    # Utilisation du token GitHub pour l'authentification
