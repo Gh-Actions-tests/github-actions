@@ -4,4 +4,4 @@ on:
     
 jobs:
   calling-a-reusable-wf:
-    uses: Gh-Actions-tests/workflows/.github/workflows/reusable.yaml@main
+    uses: Gh-Actions-tests/workflows/.github/workflows/simple-reusable-workflow.yaml@main
