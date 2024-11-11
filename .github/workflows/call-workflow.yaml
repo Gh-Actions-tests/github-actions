@@ -13,11 +13,10 @@ jobs:
       - name: Checkout this repository
         uses: actions/checkout@v2
 
-      - name: Trigger the workflow in workflows repo
-        uses: peter-evans/workflow-dispatch@v1
-        with:
-          repository: Gh-Actions-tests/workflows  # Nom du repository contenant le workflow
-          workflow: simple-workflow.yml         # Fichier du workflow dans workflows
-          ref: main                             # La branche où le workflow doit s'exécuter
-          message: "Hello from github-actions!"  # Entrée message
-          token: ${{ secrets.GITHUB_TOKEN }}    # Utilisation du token GitHub pour l'authentification
+      - name: Trigger the workflow in workflows repo using API
+        run: |
+          curl -X POST \
+          -H "Accept: application/vnd.github.v3+json" \
+          -H "Authorization: token ${{ secrets.GITHUB_TOKEN }}" \
+          https://api.github.com/repos/Gh-Actions-tests/workflows/simple-workflow.yml/dispatches \
+          -d '{"ref":"main", "inputs": {"message": "Hello from github-actions!"}}'
