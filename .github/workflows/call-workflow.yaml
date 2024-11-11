@@ -1,8 +1,10 @@
-# .github/workflows/call-workflow-from-workflows.yml
+# .github/workflows/call-workflow-from-workflows.yml dans github-actions
 name: Call Workflow from Workflows Repository
 
 on:
-  workflow_dispatch:
+  push:
+    branches:
+      - main
 
 jobs:
   call_workflow:
@@ -11,7 +13,12 @@ jobs:
       - name: Checkout this repository
         uses: actions/checkout@v2
 
-      - name: Call workflow in the workflows repository
-        uses: ./.github/workflows/simple-workflow.yml
+      - name: Trigger the workflow in workflows repo
+        uses: peter-evans/workflow-dispatch@v1
         with:
-          message: "Hello from github-actions!"
+          repository: Gh-Actions-tests/workflows  # Nom du repository contenant le workflow
+          workflow: simple-workflow.yml         # Fichier du workflow dans workflows
+          ref: main                             # La branche où le workflow doit s'exécuter
+          inputs:                               # Paramètres à passer au workflow appelé
+            message: "Hello from github-actions!"  # Entrée message
+          token: ${{ secrets.GITHUB_TOKEN }}    # Utilisation du token GitHub pour l'authentification
