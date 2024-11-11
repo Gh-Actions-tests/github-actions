@@ -1,0 +1,17 @@
+# .github/workflows/call-workflow-from-workflows.yml
+name: Call Workflow from Workflows Repository
+
+on:
+  workflow_dispatch:
+
+jobs:
+  call_workflow:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout this repository
+        uses: actions/checkout@v2
+
+      - name: Call workflow in the workflows repository
+        uses: ./.github/workflows/simple-workflow.yml
+        with:
+          message: "Hello from github-actions!"
