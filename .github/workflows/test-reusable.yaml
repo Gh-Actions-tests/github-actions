@@ -6,4 +6,4 @@ permissions:
     
 jobs:
   calling-a-reusable-wf:
-    uses: Gh-Actions-tests/workflows/.github/workflows/simple-reusable-workflow.yaml@main
+    uses: Gh-Actions-tests/workflows/.github/workflows/simple-reusable-workflow@main
