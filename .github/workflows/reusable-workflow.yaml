@@ -7,10 +7,16 @@ on:
         value: ${{ jobs.generate-output.outputs.date }}
 
 jobs:
+  nested-workflow-call:
+    uses: Gh-Actions-tests/workflows/.github/workflows/reusable.yaml@main
+    with:
+      name: 'Nested Workflow Test'
+    secrets:
+      access-token: ${{ secrets.ACCESS_TOKEN }}
   generate-output:
     runs-on: ubuntu-latest
     outputs:
         date: ${{ steps.date-step.outputs.date }}
     steps:
-      - run: echo "date=$(date)" >> $GITHUB_OUTPUT
-        id: date-step
+      - id: date-step
+        run: echo "date=$(date)" >> $GITHUB_OUTPUT
