@@ -8,6 +8,8 @@ on:
         default: "Default_Value"
         required: false
 
+# Reusing workflows : https://docs.github.com/en/actions/sharing-automations/reusing-workflows
+
 jobs:
   calling-a-reusable-wf:
     uses: Gh-Actions-tests/workflows/.github/workflows/reusable.yaml@main
