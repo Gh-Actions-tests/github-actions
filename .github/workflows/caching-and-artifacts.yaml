@@ -10,7 +10,9 @@ jobs:
         uses: actions/cache@v2
         with:
           path: ~/.npm
-          key: "npm-cache"
+          key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
+          # 1ère fois : pas de cache pour cette clef donc le crée, les fois d'après le load
+          # github.com -> Actions -> Caches
       - name: Display Cache Output
         run: echo "${{ toJSON(steps.cache-dependencies.outputs) }}"
       - name: Install dependencies
