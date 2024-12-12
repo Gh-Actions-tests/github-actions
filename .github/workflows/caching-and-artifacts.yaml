@@ -45,7 +45,7 @@ jobs:
               { headers: { Accept: 'text/plain' } }
             );
             console.log(res.data);
-            # Max 10GB of cache, more and it will start removing caches (FIFO) --> main caches first
+# Max 10GB of cache, more and it will start removing caches (FIFO) --> main caches first
 # Solutions :
 #   Consider cleaning up caches more frequently (PR caches when the PR is closed for example)
 # ex : https://docs.github.com/en/actions/writing-workflows/choosing-what-your-workflow-does/caching-dependencies-to-speed-up-workflows#managing-caches
