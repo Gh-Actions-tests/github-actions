@@ -5,23 +5,21 @@ jobs:
   deploy:
     runs-on: ubuntu-latest
     steps:
+      - name: Display mustache github workspace before
+        run: ls -a ${{ github.workspace }}
+      - name: Display github workspace before
+        run: |
+          ls -a $GITHUB_WORKSPACE
+          echo $GITHUB_WORKSPACE
       - name: List files before
         run: ls -a
       - name: Checkout
         uses: actions/checkout@v3
       - name: List files after
         run: ls -a
-
-  deploy-and-display-files:
-    runs-on: ubuntu-latest
-    steps:
-      - name: List files before
-        run: ls -a
-      - name: Checkout
+      - name: Display mustache github workspace after
+        run: ls -a ${{ github.workspace }}
+      - name: Display github workspace after
         run: |
-          git init
-          git remote add origin "https://$GITHUB_ACTOR:${{ secrets.GITHUB_TOKEN }}@github.com/$GITHUB_REPOSITORY.git"
-          git fetch origin
-          git checkout main
-      - name: List files after
-        run: ls -a
+          ls -a $GITHUB_WORKSPACE
+          echo $GITHUB_WORKSPACE
