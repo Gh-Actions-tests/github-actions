@@ -30,8 +30,6 @@ jobs:
           ls -a
           echo "=========="
           ls -a ${{ github.workspace }}
-          echo "=========="
-          ls -a ${{ github.workspace }}/backup
       - name: Download artifact ()
         uses: actions/download-artifact@v3
         with:
