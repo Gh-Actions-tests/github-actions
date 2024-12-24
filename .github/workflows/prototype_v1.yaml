@@ -32,7 +32,7 @@ jobs:
           path: ${{ github.workspace }}/backup/
       - name: Create Backup
         run: |
-          cp ${{ github.workspace }}/WEBAPP.zip ${{ github.workspace }}/backup/WEBAPP.zip
+          cp ${{ github.workspace }}/resources/WEBAPP.zip ${{ github.workspace }}/backup/WEBAPP.zip
           ls -a ${{ github.workspace }}
           ls -a ${{ github.workspace }}/backup
   deploy:
