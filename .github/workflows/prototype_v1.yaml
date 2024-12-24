@@ -12,7 +12,8 @@ jobs:
           ls -a
           ls -a ${{ github.workspace }}
           mkdir -p ${{ github.workspace }}/backup
-          ls -a ${{ github.workspace }}
+          echo "This is a backup file" > ${{ github.workspace }}/backup/backup.txt
+          ls -a ${{ github.workspace }}/backup
       - name: Upload backup
         uses: actions/upload-artifact@v3
         with:
