@@ -17,7 +17,7 @@ jobs:
       - name: Upload backup
         uses: actions/upload-artifact@v3
         with:
-          name: backup
+          name: backup-artifact
           path: ${{ github.workspace }}/backup
   create-backup:
     runs-on: ubuntu-latest
@@ -33,12 +33,10 @@ jobs:
       - name: Download artifact ()
         uses: actions/download-artifact@v3
         with:
-          name: backup
+          name: backup-artifact
           path: ${{ github.workspace }}/backup/
       - name: check files after download
         run: |
-          ls -a
-          echo "=========="
           ls -a ${{ github.workspace }}
           echo "=========="
           ls -a ${{ github.workspace }}/backup
