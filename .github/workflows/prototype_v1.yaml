@@ -25,11 +25,25 @@ jobs:
     steps:
       - name: Checkout (unncessary)
         uses: actions/checkout@v3
+      - name: check files before download
+        run: |
+          ls -a
+          echo "=========="
+          ls -a ${{ github.workspace }}
+          echo "=========="
+          ls -a ${{ github.workspace }}/backup
       - name: Download artifact ()
         uses: actions/download-artifact@v3
         with:
           name: backup
           path: ${{ github.workspace }}/backup/
+      - name: check files after download
+        run: |
+          ls -a
+          echo "=========="
+          ls -a ${{ github.workspace }}
+          echo "=========="
+          ls -a ${{ github.workspace }}/backup
       - name: Create Backup
         run: |
           cp ${{ github.workspace }}/resources/WEBAPP.zip ${{ github.workspace }}/backup/WEBAPP.zip
