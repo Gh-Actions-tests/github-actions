@@ -19,5 +19,5 @@ jobs:
       - name: Simulate deployment
         run: |
           echo "Deploying to production"
-          zip_file=$(ls ${{ github.workspace }}/resources/*.zip)
+          zip_file=$(ls ${{ github.workspace }}/resources)
           echo "Deployed zip file: $zip_file"
