@@ -21,6 +21,7 @@ jobs:
           path: ${{ github.workspace }}/backup
   create-backup:
     runs-on: ubuntu-latest
+    needs: init-backup
     steps:
       - name: Checkout (unncessary)
         uses: actions/checkout@v3
@@ -36,7 +37,7 @@ jobs:
           ls -a ${{ github.workspace }}/backup
   deploy:
     runs-on: ubuntu-latest
-    needs: init-backup
+    needs: create-backup
     steps:
       - name: Simulate deployment
         run: |
