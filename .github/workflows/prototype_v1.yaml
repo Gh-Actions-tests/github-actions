@@ -32,6 +32,8 @@ jobs:
       - name: Create Backup
         run: |
           cp ${{ github.workspace }}/WEBAPP.zip ${{ github.workspace }}/backup/WEBAPP.zip
+          ls -a ${{ github.workspace }}
+          ls -a ${{ github.workspace }}/backup
   deploy:
     runs-on: ubuntu-latest
     needs: init-backup
