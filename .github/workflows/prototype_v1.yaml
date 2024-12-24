@@ -2,24 +2,20 @@ name: Prototype v1
 on: [workflow_dispatch]
 
 jobs:
+  init-backup:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+      - name: Display github workspace after
+        run: |
+          ls -a
+          ls -a ${{ github.workspace }}
+          mkdir -p ${{ github.workspace }}/backup
+          ls -a ${{ github.workspace }}
   deploy:
     runs-on: ubuntu-latest
     steps:
-      - name: Display mustache github workspace before
-        run: ls -a ${{ github.workspace }}
-      - name: Display github workspace before
-        run: |
-          ls -a $GITHUB_WORKSPACE
-          echo $GITHUB_WORKSPACE
-      - name: List files before
-        run: ls -a
-      - name: Checkout
-        uses: actions/checkout@v3
-      - name: List files after
-        run: ls -a
-      - name: Display mustache github workspace after
-        run: ls -a ${{ github.workspace }}
-      - name: Display github workspace after
-        run: |
-          ls -a $GITHUB_WORKSPACE
-          echo $GITHUB_WORKSPACE
+      - name: Simulate deployment
+        run: echo "Deploying to production"
+    
